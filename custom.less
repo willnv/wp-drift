@@ -1,0 +1,57 @@
+// Criando o site no server? Favor usar a URL numa variável!!!
+// @url: "https://server.infodataweb.com.br/~sitetal.com.br";
+// exemplo:  background: url("@{url}/wp-content/imagem.png");
+
+// Fontes
+@font-face {
+    font-family: 'MinhaFonte';
+    src: url("");
+    font-weight: normal;
+}
+
+
+// Variáveis
+@preto: #000;
+@verdePrincipal: #0f0;
+
+// Mixins
+.DisplayFlex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.FlexAlignCenter {
+    .DisplayFlex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.FlexJustCenter {
+    .DisplayFlex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.FlexPower {
+    .DisplayFlex;
+    .FlexAlignCenter;
+    .FlexJustCenter;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+
+    .vc_row {
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+.menu-principal ul {
+    display: inline-block;
+}
+

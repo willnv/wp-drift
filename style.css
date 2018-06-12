@@ -1,0 +1,96 @@
+/*
+Theme Name: Drift
+Theme URI: https://driftweb.com.br/
+Author: DriftWeb
+Author URI: https://driftweb.com.br/
+Description: Somos a única empresa do sul de Santa Catarina especializada em sites de alto desempenho para dispositivos móveis. Quando falamos em alto desempenho, não estamos citando apenas velocidade de abertura, otimização… Estamos querendo falar também no retorno significativo de resultados aos nossos clientes.
+Version: 10.0
+*/
+
+
+/**
+ * Esse arquivo serve como reset, dar
+ * suporte a navegadores antigos
+ * e aplicação de padrões
+ */
+
+
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+
+/* Meyer Reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	color: inherit;
+}
+
+:focus {
+	outline: 0;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.subfooter {
+	background-color: #c3e4b6;
+}
+
+.subfooter > div {
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	padding: 10px 15px;
+}
