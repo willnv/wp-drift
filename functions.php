@@ -58,7 +58,8 @@ add_filter( 'body_class', 'dft_classes_extras_body' );
 function dft_enqueue_scripts() {
 
     // JS
-    wp_enqueue_script('dft-main-js', get_stylesheet_directory_uri() . 'assets/js/dft-main.js', array( 'jquery' ));
+    wp_enqueue_script( 'dft-main-js', get_stylesheet_directory_uri() . '/assets/js/dft-main.js', array( 'jquery' ) );
+    wp_enqueue_script( 'dft-sticky-menu', get_stylesheet_directory_uri() . '/assets/js/dft-sticky-menu.js', array( 'jquery' ) );
 
     // CSS
     wp_enqueue_style( 'dft-main-less', get_stylesheet_directory_uri() . '/custom.less' );

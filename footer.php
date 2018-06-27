@@ -2,7 +2,7 @@
 
 	<?php
 	/**
-	 * O tema foi feito para ser limpo e bom em
+	 * O tema foi feito para ser limpo e de boa
 	 * manutenibilidade, então utilize esse
 	 * espaço para escrever o footer em HTML puro!
 	*/
