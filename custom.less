@@ -51,7 +51,83 @@ body {
     }
 }
 
-.menu-principal ul {
-    display: inline-block;
-}
+/* MENU */
+header {
+    -webkit-transition-duration: .25s;
+    -o-transition-duration: .25s;
+    transition-duration: .25s;
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    padding: 0 16% !important;
+    margin-top: 20px !important;
+    > div {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        width: 100%;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        > p {
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 30px;
+            letter-spacing: 1.5px;
+        }
 
+        span {
+            margin: 0 9px;
+        }
+    }
+}
+.menu-principal {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    ul {
+        li:last-child a {
+            padding-right: 0px !important;
+        }
+        display: flex;
+        a {
+            padding: 8px 15px;
+            color: #fff;
+            font-size: 18px;
+            -webkit-transition: 0.2s ease-in-out;
+            -o-transition: 0.2s ease-in-out;
+            transition: 0.2s ease-in-out;
+            position: relative;
+        }
+        a:hover {}
+        a::before {
+            content: '';
+            height: 1px;
+            width: 0px;
+            position: absolute;
+            background: #fff;
+            bottom: 0;
+            visibility: hidden;
+            -webkit-transition: 0.2s ease-in-out;
+            -o-transition: 0.2s ease-in-out;
+            transition: 0.2s ease-in-out;
+            left: 16px;
+        }
+        a:hover:before {
+            bottom: 0px;
+            left: 16px;
+            visibility: visible;
+            width: 30px;
+        }
+    }
+}
