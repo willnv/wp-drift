@@ -29,6 +29,8 @@ add_filter( 'admin_title', 'my_admin_title' );
 /**
  * Função que da print_r 
  * com <pre> automatico
+ * 
+ * @param mixed $print - objeto a ser printado
  */
 if ( ! function_exists( 'pre' ) ) {
     function pre( $print ) {
