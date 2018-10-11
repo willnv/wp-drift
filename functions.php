@@ -3,7 +3,6 @@
 /**
  * Preparações iniciais do tema.
  */
-
 add_filter( 'auto_update_theme', '__return_false' );
 
 add_theme_support( 'menus' );
@@ -14,6 +13,30 @@ wp_create_nav_menu( 'Menu Principal' );
 
 show_admin_bar(false);
 
+
+
+/**
+ * Altera na área admin 
+ * o title das páginas
+ */
+function my_admin_title( $admin_title, $title ) {
+    return get_bloginfo( 'name' ) .' - '. $title;
+}
+add_filter( 'admin_title', 'my_admin_title' );
+
+
+
+/**
+ * Função que da print_r 
+ * com <pre> automatico
+ */
+if ( ! function_exists( 'pre' ) ) {
+    function pre( $print ) {
+        echo '<pre>';
+            print_r( $print );
+        echo '</pre>';
+    }
+}
 
 
 /**
