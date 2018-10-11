@@ -7,8 +7,10 @@
 add_filter( 'auto_update_theme', '__return_false' );
 
 add_theme_support( 'menus' );
-wp_create_nav_menu( 'Menu Principal' );
 add_theme_support( 'post-thumbnails' ); 
+add_theme_support( 'title-tag' ); 
+
+wp_create_nav_menu( 'Menu Principal' );
 
 show_admin_bar(false);
 
@@ -59,7 +61,7 @@ function dft_enqueue_scripts() {
 
     // JS
     wp_enqueue_script( 'dft-main-js', get_stylesheet_directory_uri() . '/assets/js/dft-main.js', array( 'jquery' ) );
-    wp_enqueue_script( 'dft-sticky-menu', get_stylesheet_directory_uri() . '/assets/js/dft-sticky-menu.js', array( 'jquery' ) );
+    //wp_enqueue_script( 'dft-sticky-menu', get_stylesheet_directory_uri() . '/assets/js/dft-sticky-menu.js', array( 'jquery' ) );
 
     // CSS
     wp_enqueue_style( 'dft-main-less', get_stylesheet_directory_uri() . '/custom.less' );
@@ -68,8 +70,7 @@ function dft_enqueue_scripts() {
 }
 
 function dft_style_admin() {
-    wp_enqueue_style( 'dft-style-admin', get_stylesheet_directory_uri() . 'assets/css/style-admin.css' );
+    wp_enqueue_style( 'dft-style-admin', get_stylesheet_directory_uri() . '/assets/css/style-admin.css' );
 }
-
 add_action( 'admin_enqueue_scripts', 'dft_style_admin' );
 add_action('wp_enqueue_scripts', 'dft_enqueue_scripts');
