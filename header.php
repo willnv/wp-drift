@@ -34,7 +34,7 @@
 
 <body <?php body_class(); ?>>
     <header class="header-principal">
-        <a href='<?= SITEURL ?>'><img src='<?= SITEURL ?>/wp-content/uploads/2018/07/logo-1.png'></a>
+        <a href='<?= SITEURL ?>'><img class="logo-header" src='<?= SITEURL ?>/wp-content/uploads/2018/07/logo-1.png'></a>
         <div>
             <nav class="menu-principal" role="navigation">
                 <?php wp_nav_menu( array ( 'menu' => 'Menu Principal' ) ); ?>

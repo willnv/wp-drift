@@ -1,18 +1,15 @@
-// Criando o site no server? Favor usar a URL numa variável!!!
-// @url: "https://server.infodataweb.com.br/~sitetal.com.br";
-// exemplo:  background: url("@{url}/wp-content/imagem.png");
+/* Carregar fontes no header.php */
 
-// Fontes
-@font-face {
-    font-family: 'MinhaFonte';
-    src: url("");
-    font-weight: normal;
-}
+@url = 'https://driftweb.com.br';
 
 
 // Variáveis
-@preto: #000;
-@verdePrincipal: #0f0;
+:root {
+    --verdePadrao: #0f0;
+    --pretoPadrao: #000;
+    
+    // color: var(--verdePadrao);
+}
 
 // Mixins
 .DisplayFlex {
@@ -42,9 +39,34 @@
 }
 
 
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    border-radius: 0px;
+    background: purple;
+}
+::-webkit-scrollbar-thumb {
+    background: pink;
+    border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: indigo;
+}
+::-webkit-input-placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #fff;
+    font-size: 16px;
+}
+
 body {
     font-family: 'Arial', sans-serif;
-
+    
+    > .vc_row {
+        padding: 0 10%;
+    }
+    
     .vc_row {
         margin-right: 0;
         margin-left: 0;
@@ -53,61 +75,67 @@ body {
 
 /* MENU */
 header {
+    .DisplayFlex;
     -webkit-transition-duration: .25s;
     -o-transition-duration: .25s;
     transition-duration: .25s;
     position: absolute;
     z-index: 999;
     width: 100%;
-    display: -webkit-box !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
-    padding: 0 16% !important;
-    margin-top: 20px !important;
+    padding: 0 10%;
+    margin-top: 20px;
+    
     > div {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
+        .DisplayFlex;
+        .FlexJustCenter;
         width: 100%;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
         -webkit-box-align: end;
         -ms-flex-align: end;
         align-items: flex-end;
+        
         > p {
-            color: #fff;
+            color: #000;
             font-size: 16px;
             margin-bottom: 30px;
             letter-spacing: 1.5px;
+            background: red;
+            padding: 5px 12px;
+            opacity: 1;
         }
-
+        
         span {
             margin: 0 9px;
         }
     }
+    
+    .logo-header {
+        max-width: 280px;
+    }
 }
+
 .menu-principal {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+    .DisplayFlex;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    
     ul {
+        .DisplayFlex;
+        
         li:last-child a {
             padding-right: 0px !important;
         }
-        display: flex;
+        
         a {
-            padding: 8px 15px;
+            padding: 8px 18px;
             color: #fff;
-            font-size: 18px;
             -webkit-transition: 0.2s ease-in-out;
             -o-transition: 0.2s ease-in-out;
             transition: 0.2s ease-in-out;
             position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 15px;
         }
         a:hover {}
         a::before {
@@ -129,5 +157,41 @@ header {
             visibility: visible;
             width: 30px;
         }
+    }
+}
+
+.sticky {
+    height: 60px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    background: red;
+    position: fixed;
+    padding: 0px 10%;
+    overflow-y: hidden;
+    -webkit-box-shadow: 0px -5px 32px #000;
+    box-shadow: 0px -5px 32px #000;
+    margin-top: 0px;
+    
+    .logo-header {
+        max-height: 48px;
+    }
+    
+    .menu-principal {
+        -webkit-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+}
+
+.menu-principal {
+    -webkit-transform: translateY(-62px);
+    -ms-transform: translateY(-62px);
+    transform: translateY(-62px);
+    
+    a {
+        color: blue;
+        font-size: 18px;
     }
 }
