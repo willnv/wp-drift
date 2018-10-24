@@ -86,7 +86,10 @@ function dft_enqueue_scripts() {
 
     // JS
     wp_enqueue_script( 'dft-main-js', get_stylesheet_directory_uri() . '/assets/js/dft-main.js', array( 'jquery' ) );
-    //wp_enqueue_script( 'dft-sticky-menu', get_stylesheet_directory_uri() . '/assets/js/dft-sticky-menu.js', array( 'jquery' ) );
+    # wp_enqueue_script( 'dft-sticky-menu', get_stylesheet_directory_uri() . '/assets/js/dft-sticky-menu.js', array( 'jquery' ) );
+
+    // Modal Video
+    # wp_enqueue_script( 'dft-modal-video-js', get_stylesheet_directory_uri() . '/assets/js/jquery-modal-video.min.js', array( 'jquery' ) );
 
     // CSS
     wp_enqueue_style( 'dft-main-less', get_stylesheet_directory_uri() . '/custom.less' );
