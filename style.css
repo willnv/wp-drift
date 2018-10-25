@@ -94,3 +94,16 @@ table {
 	margin: 0 auto;
 	padding: 10px 15px;
 }
+
+pre {
+    background: #efefef;
+    font-family: 'verdana', sans-serif;
+    font-size: 14px;
+    padding: 10px;
+    white-space: pre-wrap;
+    border: 1px solid #d9d9d9;
+}
+
+img {
+    max-width: 100%;
+}
