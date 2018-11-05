@@ -76,7 +76,7 @@ table {
 }
 
 .subfooter {
-	background-color: #c3e4b6;
+	background: radial-gradient(blue, lime);
 }
 
 .subfooter > div {
