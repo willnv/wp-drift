@@ -8,6 +8,7 @@ add_filter( 'auto_update_theme', '__return_false' );
 add_theme_support( 'menus' );
 add_theme_support( 'post-thumbnails' ); 
 add_theme_support( 'title-tag' ); 
+add_theme_support( 'custom-logo' );
 
 wp_create_nav_menu( 'Menu Principal' );
 
@@ -19,10 +20,24 @@ show_admin_bar(false);
  * Altera na área admin 
  * o title das páginas
  */
-function my_admin_title( $admin_title, $title ) {
+function title_admin( $admin_title, $title ) {
     return get_bloginfo( 'name' ) .' - '. $title;
 }
-add_filter( 'admin_title', 'my_admin_title', 10, 2 );
+add_filter( 'admin_title', 'title_admin', 10, 2 );
+
+
+
+/**
+ * Adiciona suporte ao LESS
+ */
+if ( !is_admin() ) {
+    function add_less() {
+        require_once( dirname( __FILE__ ) . '/lib/wp-less/wp-less.php');
+    }
+
+    add_action( 'wp_enqueue_scripts', 'add_less' );
+}
+
 
 
 
@@ -66,12 +81,14 @@ function dft_register_sidebars() {
  * as categorias do post.
  */
 function dft_classes_extras_body( $classes ) {
-
+    global $post;
     $cats = get_the_category();
 
     foreach( $cats as $cat ):
         $classes[] = $cat->slug;
     endforeach;
+
+    $classes[] = $post->post_name;
 
     return $classes;
 }
@@ -89,7 +106,7 @@ function dft_enqueue_scripts() {
     # wp_enqueue_script( 'dft-sticky-menu', get_stylesheet_directory_uri() . '/assets/js/dft-sticky-menu.js', array( 'jquery' ) );
 
     // Modal Video
-    # wp_enqueue_script( 'dft-modal-video-js', get_stylesheet_directory_uri() . '/assets/js/jquery-modal-video.min.js', array( 'jquery' ) );
+    # wp_enqueue_script( 'dft-modal-video-js', get_stylesheet_directory_uri() . '/lib/modal-video/jquery-modal-video.min.js', array( 'jquery' ) );
 
     // CSS
     wp_enqueue_style( 'dft-main-less', get_stylesheet_directory_uri() . '/custom.less' );

@@ -21,6 +21,7 @@
 
 </footer>
 
-
-<?php wp_footer() ?>
+<div class="scripts">
+	<?php wp_footer() ?>
+</div>
 </body>
