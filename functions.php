@@ -30,13 +30,8 @@ add_filter( 'admin_title', 'title_admin', 10, 2 );
 /**
  * Adiciona suporte ao LESS
  */
-if ( !is_admin() ) {
-    function add_less() {
-        require_once( dirname( __FILE__ ) . '/lib/wp-less/wp-less.php');
-    }
-
-    add_action( 'wp_enqueue_scripts', 'add_less' );
-}
+if ( !is_admin() )
+    require_once( dirname( __FILE__ ) . '/lib/wp-less/wp-less.php' );
 
 
 
@@ -118,4 +113,4 @@ function dft_style_admin() {
     wp_enqueue_style( 'dft-style-admin', get_stylesheet_directory_uri() . '/assets/css/style-admin.css' );
 }
 add_action( 'admin_enqueue_scripts', 'dft_style_admin' );
-add_action('wp_enqueue_scripts', 'dft_enqueue_scripts');
+add_action( 'wp_enqueue_scripts', 'dft_enqueue_scripts' );
