@@ -36,7 +36,7 @@
 
     <body <?php body_class(); ?>>
         <header class="header-principal">
-            <a href='<?= SITEURL ?>'><?php the_custom_logo(); ?></a>
+            <?php the_custom_logo(); ?>
             <div>
                 <nav class="menu-principal" role="navigation">
                     <?php wp_nav_menu( array ( 'menu' => 'Menu Principal' ) ); ?>
