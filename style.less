@@ -1,0 +1,176 @@
+/* 
+hello ¯\_(ツ)_/¯
+Carregar fontes no header.php
+*/
+
+@url: 'https://driftweb.com.br'; // @{url}
+
+// Variáveis
+:root {
+    --verdePadrao: #0f0;
+    --pretoPadrao: #000;
+    // color: var(--verdePadrao);
+}
+
+// Mixins
+.DisplayFlex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.FlexAlignCenter {
+    .DisplayFlex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.FlexJustCenter {
+    .DisplayFlex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.FlexPower {
+    .DisplayFlex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.FlexColumn {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+// Scrollbar 
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    border-radius: 0px;
+    background: purple;
+}
+::-webkit-scrollbar-thumb {
+    background: pink;
+    border-radius: 0px;
+}
+
+
+
+// Geral
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.main-grid {
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+// Header 
+.main-header {
+    background: darkcyan;
+
+    .header-grid {
+        max-width: 1440px;
+        margin: 0 auto;
+        .FlexAlignCenter;
+        justify-content: space-between;
+    }
+    
+    .custom-logo-link {
+        display: block;
+        max-width: 250px;
+    }
+
+    .menu {
+        .DisplayFlex;
+
+        li:not(:last-of-type) {
+            margin-right: 10px;
+        }
+
+        a {
+            position: relative;
+
+            &::before {
+                content: "";
+                height: 1px;
+                position: absolute;
+                background: #fff;
+                width: 0;
+                bottom: -5px;
+                transition: width .2s;
+            }
+
+            &:hover::before {
+                width: 10px;
+            }
+        }
+    }
+
+    .menu-item-has-children:hover .sub-menu {
+        opacity: 1;
+    }
+    
+    .sub-menu {
+        position: absolute;
+        opacity: 0;
+    }
+}
+
+.sticky {
+    height: 60px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    background: red;
+    position: fixed;
+    padding: 0px 10%;
+    overflow-y: hidden;
+    -webkit-box-shadow: 0px -5px 32px #000;
+    box-shadow: 0px -5px 32px #000;
+    margin-top: 0px;
+    
+    .logo-header {
+        max-height: 48px;
+    }
+    
+    .menu-principal {
+        -webkit-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+}
+
+// Single Post
+
+.subfooter {
+	background: radial-gradient(blue, lime);
+}
+
+.subfooter > div {
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	padding: 10px 15px;
+}

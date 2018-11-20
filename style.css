@@ -4,7 +4,7 @@ Theme URI: https://driftweb.com.br/
 Author: DriftWeb
 Author URI: https://driftweb.com.br/
 Description: Tema para Wordpress leve e compacto, criado pela equipe de desenvolvimento da Drift Web.
-Version: 0.1
+Version: 0.4
 */
 
 
@@ -75,26 +75,6 @@ table {
 	border-spacing: 0;
 }
 
-.subfooter {
-	background: radial-gradient(blue, lime);
-}
-
-.subfooter > div {
-	display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
-	-webkit-flex-wrap: wrap;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
-	margin: 0 auto;
-	padding: 10px 15px;
-}
-
 pre {
     background: #efefef;
     font-family: 'verdana', sans-serif;
@@ -105,5 +85,6 @@ pre {
 }
 
 img {
-    max-width: 100%;
+	max-width: 100%;
+	height: auto;
 }

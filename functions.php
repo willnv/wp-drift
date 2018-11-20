@@ -1,5 +1,7 @@
 <?php	
 
+require_once 'theme-config.php';
+
 /**
  * Preparações iniciais do tema.
  */
@@ -9,12 +11,12 @@ add_theme_support( 'menus' );
 add_theme_support( 'post-thumbnails' ); 
 add_theme_support( 'title-tag' ); 
 add_theme_support( 'custom-logo' );
-# add_theme_support( 'woocommerce' );
-
 wp_create_nav_menu( 'Menu Principal' );
+show_admin_bar( false );
 
-show_admin_bar(false);
-
+if ( SUPORTE_WOOCOMMERCE ) {
+    add_theme_support( 'woocommerce' );
+}
 
 
 /**
@@ -98,16 +100,30 @@ add_filter( 'body_class', 'dft_classes_extras_body' );
 function dft_enqueue_scripts() {
 
     // JS
-    wp_enqueue_script( 'dft-main-js', get_stylesheet_directory_uri() . '/assets/js/dft-main.js', array( 'jquery' ) );
+    wp_enqueue_script( 'dft-custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.js', array( 'jquery' ) );
     # wp_enqueue_script( 'dft-sticky-menu', get_stylesheet_directory_uri() . '/assets/js/dft-sticky-menu.js', array( 'jquery' ) );
 
-    // Modal Video
-    # wp_enqueue_script( 'dft-modal-video-js', get_stylesheet_directory_uri() . '/lib/modal-video/jquery-modal-video.min.js', array( 'jquery' ) );
-
     // CSS
-    wp_enqueue_style( 'dft-main-less', get_stylesheet_directory_uri() . '/custom.less' );
+    wp_enqueue_style( 'dft-main-less', get_stylesheet_directory_uri() . '/style.less' );
     wp_enqueue_style( 'dft-main-css', get_stylesheet_directory_uri() . '/style.css' );
-    wp_enqueue_style( 'dft-font-awesome', 'https://use.fontawesome.com/releases/v5.0.13/css/all.css' );
+
+
+    /**
+     * LIBS
+     */
+    if ( SLIM_SELECT ) {
+        wp_enqueue_style( 'slim-select-css', 'https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.18.6/slimselect.min.css' );
+        wp_enqueue_script( 'slim-select-js', 'https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.18.6/slimselect.min.js' );
+    }
+
+    if ( MODAL_VIDEO_JS ) {
+        wp_enqueue_script( 'dft-modal-video-js', get_stylesheet_directory_uri() . '/lib/modal-video/jquery-modal-video.min.js', array( 'jquery' ) );
+    }
+
+    if ( IMAGE_LIGHTBOX ) {
+        wp_enqueue_script( 'lightbox-js', get_stylesheet_directory_uri() . '/lib/lightbox/lightbox.min.js', array( 'jquery' ) );
+        wp_enqueue_style( 'lightbox-css', get_stylesheet_directory_uri() . '/lib/lightbox/lightbox.min.css' );
+    }
 }
 
 function dft_style_admin() {

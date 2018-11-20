@@ -1,15 +1,15 @@
-	<footer>
+	<footer class="main-footer">
 
 		<?php
 		/**
 		 * O tema foi feito para ser limpo e de boa
 		 * manutenibilidade, então utilize esse
-		 * espaço para escrever o footer em HTML puro!
+		 * espaço para escrever o footer em HTML.
 		*/
 		?>
 
 		<div class="subfooter">
-			<div class="dft-grid">
+			<div class="main-grid">
 				<div>
 					<span>&copy; Empresa Fictícia. Todos os direitos Reservados.</span>
 				</div>
