@@ -10,7 +10,6 @@
         <?php } ?>
 
         <?php wp_head(); ?>
-        
 
         <?php 
         /**
