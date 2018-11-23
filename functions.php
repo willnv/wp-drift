@@ -116,8 +116,9 @@ function dft_enqueue_scripts() {
         wp_enqueue_script( 'slim-select-js', 'https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.18.6/slimselect.min.js' );
     }
 
-    if ( MODAL_VIDEO_JS ) {
+    if ( MODAL_VIDEO ) {
         wp_enqueue_script( 'dft-modal-video-js', get_stylesheet_directory_uri() . '/lib/modal-video/jquery-modal-video.min.js', array( 'jquery' ) );
+        wp_enqueue_style( 'dft-modal-video-css', get_stylesheet_directory_uri() . '/lib/modal-video/modal-video.min.css' );
     }
 
     if ( IMAGE_LIGHTBOX ) {

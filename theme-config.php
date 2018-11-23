@@ -9,7 +9,7 @@
  * Exemplo: is_page( 'contato' )
  * 
  */
-define( 'MODAL_VIDEO_JS', false );
+define( 'MODAL_VIDEO', false );
 define( 'IMAGE_LIGHTBOX', false );
 define( 'SLIM_SELECT', false );
 
