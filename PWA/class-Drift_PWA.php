@@ -50,7 +50,7 @@ class Drift_PWA {
                 if ('serviceWorker' in navigator) {
                     navigator.serviceWorker.register( '<?= SITEURL ?>/serviceWorker.js')
                     .then(function(registration) {
-                        console.log('- SW Registrado -\n' + registration);
+                        console.log('- SW Registrado -');
                     })
                     .catch(function(err) {
                         console.error('Erro: Service Worker não carregado: class-Drift_PWA.php \n' + err);
