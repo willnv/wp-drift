@@ -36,3 +36,10 @@ define( 'COR_BARRA_NAVEGADOR', '#000000' );
 define( 'SITEURL', get_site_url() );
 define( 'THEME_DIR', get_stylesheet_directory_uri() );
 define( 'FONTS_DIR', get_stylesheet_directory_uri() . '/fontes' );
+
+
+/**
+ * Debug
+ */
+ini_set( 'display_errors', 'On' ); // off
+error_reporting( E_ALL );
