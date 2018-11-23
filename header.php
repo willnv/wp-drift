@@ -5,10 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="<?= COR_BARRA_NAVEGADOR ?>">
 
-        <?php if ( SUPORTE_PWA ) { ?>
-            <link rel="manifest" href="<?= get_stylesheet_directory_uri() . '/PWA/manifest.json' ?>">
-        <?php } ?>
-
         <?php wp_head(); ?>
 
         <?php 
