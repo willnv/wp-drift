@@ -13,6 +13,10 @@ define( 'MODAL_VIDEO', false );
 define( 'IMAGE_LIGHTBOX', false );
 define( 'SLIM_SELECT', false );
 
+/**
+ * Caso o Blog use comentários
+ */
+define( 'REPLY_COMMENTS', false);
 
 /**
  * Configs do WooCommerce
