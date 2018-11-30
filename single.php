@@ -24,6 +24,12 @@
             the_content();
         endwhile; ?>
     </div>
+
+    <div class="container-comments">
+        <?php  if ( ( comments_open() || get_comments_number() ) && COMENTARIOS ) :
+            comments_template();
+        endif; ?>
+    </div>
 </section>
 
 <?php get_footer();

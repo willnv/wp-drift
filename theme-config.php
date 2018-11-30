@@ -28,6 +28,13 @@ define( 'SUPORTE_PWA', true );
 define( 'COR_BARRA_NAVEGADOR', '#000000' );
 
 
+/**
+ * Outras configs
+ */
+define( 'COMENTARIOS', false );
+
+
+
 
 /**
  * ~ Aqui não é preciso editar nada ~
