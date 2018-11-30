@@ -1,7 +1,7 @@
 <?php	
 
 require_once 'theme-config.php';
-
+// oi
 /**
  * Preparações iniciais do tema.
  */
