@@ -113,6 +113,9 @@ function dft_enqueue_scripts() {
     wp_enqueue_style( 'dft-main-css', THEME_DIR . '/style.css' );
 
 
+    wp_enqueue_script( 'animate-it-js', THEME_DIR . '/lib/animate-it/css3-animate-it.js', array( 'jquery' ) );
+    wp_enqueue_style( 'animate-it-css', THEME_DIR . '/lib/animate-it/animations.css' );
+
     /**
      * LIBS
      */
@@ -122,8 +125,8 @@ function dft_enqueue_scripts() {
     }
 
     if ( MODAL_VIDEO ) {
-        wp_enqueue_script( 'dft-modal-video-js', get_stylesheet_directory_uri() . '/lib/modal-video/jquery-modal-video.min.js', array( 'jquery' ) );
-        wp_enqueue_style( 'dft-modal-video-css', get_stylesheet_directory_uri() . '/lib/modal-video/modal-video.min.css' );
+        wp_enqueue_script( 'dft-modal-video-js', THEME_DIR. '/lib/modal-video/jquery-modal-video.min.js', array( 'jquery' ) );
+        wp_enqueue_style( 'dft-modal-video-css', THEME_DIR. '/lib/modal-video/modal-video.min.css' );
     }
 
     if ( IMAGE_LIGHTBOX ) {

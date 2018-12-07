@@ -17,6 +17,9 @@ Version: 0.4
 
 html { box-sizing: border-box; }
 *, *:before, *:after { box-sizing: inherit; }
+html, body {
+    height: 100%;
+}
 
 /* Meyer Reset */
 html, body, div, span, applet, object, iframe,
