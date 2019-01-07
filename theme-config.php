@@ -12,6 +12,7 @@
 define( 'MODAL_VIDEO', false );
 define( 'IMAGE_LIGHTBOX', false );
 define( 'SLIM_SELECT', false );
+define( 'SLICK_SLIDER', false );
 
 
 /**
@@ -32,6 +33,8 @@ define( 'COR_BARRA_NAVEGADOR', '#000000' );
  * Outras configs
  */
 define( 'COMENTARIOS', false );
+define( 'BLOG', true );
+define( 'ID_ANALYTICS', false );
 
 
 
