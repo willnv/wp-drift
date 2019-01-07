@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
+
+        <?php echo dft_analytics_script(); ?>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <meta name="theme-color" content="<?= COR_BARRA_NAVEGADOR ?>">
