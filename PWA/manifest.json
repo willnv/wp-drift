@@ -1,6 +1,8 @@
 {
   "short_name": "Drift Web",
   "name": "Drift Web",
+  "orientation": "any",
+  "start_url": "/",
   "icons": [
     {
       "src": "./icones/icone-192.png",
