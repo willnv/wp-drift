@@ -16,9 +16,16 @@ Version: 0.4
 
 
 html { box-sizing: border-box; }
+
 *, *:before, *:after { box-sizing: inherit; }
+
 html, body {
     height: 100%;
+    overflow-y: auto;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 /* Meyer Reset */
@@ -85,6 +92,7 @@ pre {
     padding: 10px;
     white-space: pre-wrap;
     border: 1px solid #d9d9d9;
+    word-break: break-word;
     color: #6d6d6d;
 }
 
