@@ -5,14 +5,14 @@ Carregar fontes no header.php
 
 @url: 'https://driftweb.com.br'; // @{url}
 
-// Variáveis //
+// Variáveis
 :root {
     --verdePadrao: #0f0;
     --pretoPadrao: #000;
     // color: var(--verdePadrao);
 }
 
-// Mixins
+// $Mixins
 .DisplayFlex {
     display: -webkit-box;
     display: -webkit-flex;
@@ -51,22 +51,24 @@ Carregar fontes no header.php
     flex-direction: column;
 }
 
-// Scrollbar 
+// $Scrollbar 
+/*
 ::-webkit-scrollbar {
     width: 12px;
 }
 ::-webkit-scrollbar-track {
-    border-radius: 0px;
+    border-radius: 0;
     background: purple;
 }
 ::-webkit-scrollbar-thumb {
     background: pink;
-    border-radius: 0px;
+    border-radius: 0;
 }
+*/
 
 
 
-// Geral
+// $Geral
 body {
     font-family: 'Arial', sans-serif;
 }
@@ -76,13 +78,18 @@ body {
     margin: 0 auto;
 }
 
-// Header 
+// $Header 
 .main-header {
-    background: darkcyan;
-    
+    background: #151515;
+    height: 60px;
+    .FlexAlignCenter;
+    padding: 5px 0;
+
     .header-grid {
-        max-width: 1440px;
+        max-width: 1470px;
+        padding: 0 15px;
         margin: 0 auto;
+        width: 100%;
         .FlexAlignCenter;
         justify-content: space-between;
     }
@@ -101,6 +108,7 @@ body {
         
         a {
             position: relative;
+            color: #fff;
             
             &::before {
                 content: "";
@@ -136,32 +144,39 @@ body {
     align-items: center;
     background: red;
     position: fixed;
-    padding: 0px 10%;
+    padding: 0 10%;
     overflow-y: hidden;
-    -webkit-box-shadow: 0px -5px 32px #000;
-    box-shadow: 0px -5px 32px #000;
-    margin-top: 0px;
+    -webkit-box-shadow: 0 -5px 32px #000;
+    box-shadow: 0 -5px 32px #000;
+    margin-top: 0;
     
     .logo-header {
         max-height: 48px;
     }
     
     .menu-principal {
-        -webkit-transform: translateY(0px);
-        -ms-transform: translateY(0px);
-        transform: translateY(0px);
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
     }
 }
 
+
+
+// $Footer
 .subfooter {
-	background: radial-gradient(blue, lime);
+    background: linear-gradient(-3deg,#0f0c29,#302b63);
+    color: #fff;
+    height: 60px;
+    .FlexAlignCenter;
     
     .desenvolvimento a {
-        color: #0f0;
+        color: #17d117;
     }
     
-    > div {
+    .main-grid {
         .DisplayFlex;
+        width: 100%;
         -webkit-box-pack: justify;
         -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
@@ -171,5 +186,9 @@ body {
         flex-wrap: wrap;
         margin: 0 auto;
         padding: 10px 15px;
+
+        > div {
+            margin: 0 5px;
+        }
     }
 }
