@@ -1,26 +1,53 @@
 /**
- * Sticky menu
+ * Sticky menu para o tema WP-Drift
+ * 
+ * @author Willon Nava
  */
-var classeMenu = ".header-principal";
+jQuery(function($) {
 
-if (window.screen.width > 1000) {
-    stickyDesktop();
-    $(document).scroll(stickyDesktop);
-}
+    var sticky_menu = {
 
-function stickyDesktop() {
-    var windowHeight = $(document).scrollTop();
-    var minWidth = 0;
+        /**
+         * Inicia as funções, variáveis e aplica 
+         * os eventos.
+         */
+        init: function() {
+            this.seletorMenu = $(".main-header");
+            this.document = $(document);
+            this.screenWidth = window.screen.width;
 
-    if (window.screen.width < 1400) {
-        minWidth = 100;
-    } else {
-        minWidth = 180;
+            this.stickyDesktop = this.stickyDesktop.bind( this );
+    
+            if (this.screenWidth > 1000) {
+                this.document.on( 'scroll', this.stickyDesktop);
+            } else {
+                //this.document.on( 'scroll', this.stickyMobile);
+            }
+        },
+    
+
+        /**
+         * Adiciona a classe sticky no header, quando
+         * o a distancia para o topo for maior que
+         * "distanciaAtivar"
+         */
+        stickyDesktop: function() {
+            var distancia = this.document.scrollTop();
+            var distanciaAtivar = 100;
+
+            if (distancia > distanciaAtivar) {
+                this.seletorMenu.addClass("sticky");
+            } else {
+                this.seletorMenu.removeClass("sticky");
+            }
+        },
+
+        /**
+         * A ser desenvolvido.
+         */
+        stickyMobile: function() {}
     }
+    
+    sticky_menu.init();
 
-    if (windowHeight >= minWidth) {
-        $(classeMenu).addClass("sticky");
-    } else {
-        $(classeMenu).removeClass("sticky");
-    }
-}
+});
