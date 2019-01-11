@@ -150,15 +150,12 @@ add_action( 'wp_enqueue_scripts', 'desativa_embed', 99 );
 function dft_enqueue_scripts() {
 
     // JS
-    wp_enqueue_script( 'dft-custom-js', THEME_DIR . '/assets/js/custom.js', array( 'jquery' ) );
-    # wp_enqueue_script( 'dft-sticky-menu', THEME_DIR . '/assets/js/dft-sticky-menu.js', array( 'jquery' ) );
+    wp_enqueue_script( 'dft-custom-js', THEME_DIR . '/assets/js/custom.js', array( 'jquery' ), false, true );
+    wp_enqueue_script( 'dft-sticky', THEME_DIR . '/assets/js/dft-sticky.js', array( 'jquery' ), false, true );
 
     // CSS
     wp_enqueue_style( 'dft-main-less', THEME_DIR . '/style.less' );
     wp_enqueue_style( 'dft-main-css', THEME_DIR . '/style.css' );
-
-    wp_enqueue_script( 'animate-it-js', THEME_DIR . '/lib/animate-it/css3-animate-it.js', array( 'jquery' ) );
-    wp_enqueue_style( 'animate-it-css', THEME_DIR . '/lib/animate-it/animations.css' );
 
     /**
      * LIBS
