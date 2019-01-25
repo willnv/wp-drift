@@ -3,6 +3,8 @@
 /**
  * Loop padrão de posts, com exemplo
  * de como usar attributos no shortcode (opcional).
+ * 
+ * [post-loop post_type="post" posts_per_page="10"]
  */
 function post_loop( $atts ) {
 
