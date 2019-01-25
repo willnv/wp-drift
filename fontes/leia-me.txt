@@ -1,0 +1,3 @@
+NÃO UTILIZAR fontes em formato ttf, pois são muito pesadas. Invés disso, acessar um conversor/gerador de fonte e converter para woff/woff2.
+
+Exemplo: https://www.fontsquirrel.com/tools/webfont-generator
