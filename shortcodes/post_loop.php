@@ -3,7 +3,7 @@
 
 function post_loop( $args ) {
     $a = shortcode_atts( array(
-        'post_type'      => 'post'
+        'post_type'      => 'post',
         'posts_per_page' => 4,
 
     ), $atts );

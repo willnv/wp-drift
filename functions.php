@@ -2,12 +2,14 @@
 
 require_once 'theme-config.php';
 
+
 function bloqueia_em_construcao() {
     if ( EM_BREVE && !is_user_logged_in() && $GLOBALS['pagenow'] != 'wp-login.php' ) {
         require 'em-breve.php';
     }
 }
 add_action( 'template_redirect', 'bloqueia_em_construcao' );
+
 
 /**
  * Preparações iniciais do tema.
@@ -30,7 +32,6 @@ if ( SUPORTE_PWA ) {
 }
 
 
-
 /**
  * Altera na área admin 
  * o title das páginas
@@ -41,7 +42,6 @@ function title_admin( $admin_title, $title ) {
 add_filter( 'admin_title', 'title_admin', 10, 2 );
 
 
-
 /**
  * Adiciona suporte ao LESS
  */
@@ -49,6 +49,22 @@ if ( !is_admin() )
     require_once( dirname( __FILE__ ) . '/lib/wp-less/wp-less.php' );
 
 
+/**
+ * Carrega os shortcodes criados na pasta
+ * shortcodes. Não são carregados na área admin
+ */
+function carrega_shortcodes() {
+
+    if ( is_admin() )
+        return;
+
+    $arquivos = glob( dirname( __FILE__ ) . '/shortcodes/*.php' );
+
+    foreach( $arquivos as $arquivo ) {
+        include $arquivo;
+    }
+}
+add_action( 'init', 'carrega_shortcodes' );
 
 
 /**
@@ -81,9 +97,8 @@ function dft_register_sidebars() {
         'id'          => 'sidebar-singlepost',
         'description' => 'Sidebar visível apenas no single post.'
     ));
- }
- add_action( 'widgets_init', 'dft_register_sidebars' );
-
+}
+add_action( 'widgets_init', 'dft_register_sidebars' );
 
 
 /**
