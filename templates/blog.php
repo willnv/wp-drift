@@ -8,8 +8,6 @@ get_header();
 /**
  * Variáveis
  */
-$tamanho_thumbnail = 'medium'; // para resolução personalizada utilizar: array( 350, 350 )
-$texto_ler_mais    = 'Leia mais';
 $maximo_de_posts   = 10;
 $ordem             = 'DESC';
 $ordenar_por       = 'date';
@@ -25,7 +23,7 @@ $query = new WP_Query( array(
 <section class="container-loop-post main-content">
     <div class="main-grid">
         <?php if ( $query->have_posts() ):
-            while( $query->have_posts() ): $query->the_post(); 
+            while( $query->have_posts() ): $query->the_post();
                 /**
                  * Início do loop dos posts padrões
                  */
@@ -44,4 +42,4 @@ $query = new WP_Query( array(
     </div>
 </section>
 
-<?php get_footer(); ?>
+<?php get_footer();
