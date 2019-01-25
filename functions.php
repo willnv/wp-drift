@@ -2,6 +2,13 @@
 
 require_once 'theme-config.php';
 
+function bloqueia_em_construcao() {
+    if ( EM_BREVE && !is_user_logged_in() && $GLOBALS['pagenow'] != 'wp-login.php' ) {
+        require 'em-breve.php';
+    }
+}
+add_action( 'template_redirect', 'bloqueia_em_construcao' );
+
 /**
  * Preparações iniciais do tema.
  */
