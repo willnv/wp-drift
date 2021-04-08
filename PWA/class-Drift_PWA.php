@@ -4,12 +4,12 @@ class Drift_PWA {
 
     public function __construct() {
         add_action( 'wp_head', array( __CLASS__, 'load_manifest' ) );
-        add_action( 'after_setup_theme', array( __CLASS__, 'cria_service_worker' ) );
+        add_action( 'after_setup_theme', array( __CLASS__, 'create_service_worker' ) );
         add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_service_worker' ) );
     }
 
     /**
-     * Carrega o manifest.json entre as tags <head> do site
+     * Loads manifest.json
      */
     public static function load_manifest() {
         $dir = THEME_DIR . '/PWA/manifest.json';
@@ -18,13 +18,11 @@ class Drift_PWA {
         echo $tag;
     }
 
-
     /**
-     * Cria o ServiceWorker.js na pasta raíz do site hospedado,
-     * isso é necessário pois o sw sempre terá controle apenas sobre
-     * os diretórios filhos.
+     * Creates the serviceWorker.js file in the
+     * website's root folder.
      */
-    public static function cria_service_worker() {
+    public static function create_service_worker() {
 
         if ( !file_exists( ABSPATH . 'serviceWorker.js' ) ) {
 
@@ -37,7 +35,7 @@ class Drift_PWA {
                 fclose( $file );
 
             } catch (Exception $e) {
-                echo 'Erro: não foi possível criar o arquivo serviceWorker.js';
+                echo 'Error: serviceWorker.js file can\'t be created';
 
                 return false;
             }
@@ -51,15 +49,15 @@ class Drift_PWA {
      */
     public static function load_service_worker() { 
         
-        if ( self::cria_service_worker() ): ?>
+        if ( self::create_service_worker() ): ?>
             <script>
                 if ('serviceWorker' in navigator) {
                     navigator.serviceWorker.register( '<?= SITEURL ?>/serviceWorker.js')
                     .then(function(registration) {
-                        console.log('- SW Registrado -');
+                        console.log('Service Worker registered');
                     })
                     .catch(function(err) {
-                        console.error('Erro: Service Worker não carregado: class-Drift_PWA.php \n' + err);
+                        console.error('Error: Service Worker can\'t be loaded.');
                     });
                 }
             </script>

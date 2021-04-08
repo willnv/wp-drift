@@ -1,10 +1,10 @@
 <?php
-
 /**
- * Loop padrão de posts, com exemplo
- * de como usar attributos no shortcode (opcional).
+ * Default post-type loop
  * 
- * [post-loop post_type="post" posts_per_page="10"]
+ * Options: 
+ * post_type - String
+ * posts_per_page - int
  */
 function post_loop( $atts ) {
 

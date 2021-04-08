@@ -2,17 +2,23 @@
 
 require_once 'theme-config.php';
 
+/**
+ * General config
+ */
+define( 'SITEURL', get_site_url() );
+define( 'THEME_DIR', get_stylesheet_directory_uri() );
+define( 'FONTS_DIR', get_stylesheet_directory_uri() . '/fontes' );
 
-function bloqueia_em_construcao() {
-    if ( EM_BREVE && !is_user_logged_in() && $GLOBALS['pagenow'] != 'wp-login.php' ) {
-        require 'em-breve.php';
+function dft_maintenance_mode() {
+    if ( MAINTENANCE && !is_user_logged_in() && $GLOBALS['pagenow'] != 'wp-login.php' ) {
+        require_once 'maintenance-mode.php';
     }
 }
-add_action( 'template_redirect', 'bloqueia_em_construcao' );
+add_action( 'template_redirect', 'dft_maintenance_mode' );
 
 
 /**
- * Preparações iniciais do tema.
+ * Initial setup
  */
 add_filter( 'auto_update_theme', '__return_false' );
 
@@ -20,21 +26,21 @@ add_theme_support( 'menus' );
 add_theme_support( 'post-thumbnails' ); 
 add_theme_support( 'title-tag' ); 
 add_theme_support( 'custom-logo' );
-wp_create_nav_menu( 'Menu Principal' );
+wp_create_nav_menu( 'Main Menu' );
 show_admin_bar( false );
 
-if ( SUPORTE_WOOCOMMERCE ) {
+if ( WOOCOMMERCE_SUPPORT ) {
     add_theme_support( 'woocommerce' );
 }
 
-if ( SUPORTE_PWA ) {
+if ( PWA_SUPPORT ) {
     require_once 'PWA/class-Drift_PWA.php';
 }
 
 
 /**
- * Altera na área admin 
- * o title das páginas
+ * Add the website's
+ * title to the admin panel
  */
 function title_admin( $admin_title, $title ) {
     return get_bloginfo( 'name' ) .' - '. $title;
@@ -43,35 +49,36 @@ add_filter( 'admin_title', 'title_admin', 10, 2 );
 
 
 /**
- * Adiciona suporte ao LESS
+ * Load LESS lib
  */
 if ( !is_admin() )
     require_once( dirname( __FILE__ ) . '/lib/wp-less/wp-less.php' );
 
 
 /**
- * Carrega os shortcodes criados na pasta
- * shortcodes. Não são carregados na área admin
+ * Load shortcodes created in
+ * /shortcodes folder. Not loaded
+ * in admin panel.
  */
-function carrega_shortcodes() {
+function dft_load_shortcodes() {
 
     if ( is_admin() )
         return;
 
-    $arquivos = glob( dirname( __FILE__ ) . '/shortcodes/*.php' );
+    $files = glob( dirname( __FILE__ ) . '/shortcodes/*.php' );
 
-    foreach( $arquivos as $arquivo ) {
-        include $arquivo;
+    foreach( $files as $file ) {
+        include_once $file;
     }
 }
-add_action( 'init', 'carrega_shortcodes' );
+add_action( 'init', 'dft_load_shortcodes' );
 
 
 /**
- * Função que da print_r 
- * com <pre> automatico
+ * Pretty-prints an object
+ * for debug purposes
  * 
- * @param mixed $print - objeto a ser printado
+ * @param mixed $print - object to be printed
  */
 if ( ! function_exists( 'pre' ) ) {
     function pre( $print ) {
@@ -83,29 +90,29 @@ if ( ! function_exists( 'pre' ) ) {
 
 
 /**
- * Registrando sidebars nos widgets
+ * Register sidebars
  */
 function dft_register_sidebars() {
     register_sidebar(array(
         'name'        => 'Blog Sidebar',
         'id'          => 'sidebar-blog',
-        'description' => 'Sidebar visível apenas na página de blog.'
+        'description' => 'A sidebar only visible on Blog page.'
     ));
 
     register_sidebar(array(
         'name'        => 'Single Post Sidebar',
         'id'          => 'sidebar-singlepost',
-        'description' => 'Sidebar visível apenas no single post.'
+        'description' => 'A sidebar only visible on Single post.'
     ));
 }
 add_action( 'widgets_init', 'dft_register_sidebars' );
 
 
 /**
- * Adicionando classes extras no body, 
- * as categorias do post.
+ * Adds additional classes to
+ * <body>, including post category
  */
-function dft_classes_extras_body( $classes ) {
+function dft_body_extra_classes( $classes ) {
     global $post;
     $cats = get_the_category();
 
@@ -113,16 +120,18 @@ function dft_classes_extras_body( $classes ) {
         $classes[] = $cat->slug;
     endforeach;
 
-    $classes[] = $post->post_name;
+    if ( $post ) {
+        $classes[] = $post->post_name;
+    }
 
     return $classes;
 }
-add_filter( 'body_class', 'dft_classes_extras_body' );
+add_filter( 'body_class', 'dft_body_extra_classes' );
 
 
 /**
- * Retorna o código do analytics, o ID deve
- * ser definido no theme-config.php
+ * Adds analytics ID to the website.
+ * Define this in theme config file
  */
 function dft_analytics_script() {
 
@@ -136,20 +145,19 @@ function dft_analytics_script() {
 
 
 /**
- * Desativa scripts desnecessários em algumas páginas.
+ * Dequeues unnecessary scripts & styles
  * 
- * O script de emoji só será carregado se a global
- * BLOG estiver true e se for um single-post. Em
- * post types criados e páginas não será carregado.
+ * Emoji script will only be loaded on single
+ * blog posts if BLOG constant is true
  */
 if ( !BLOG ) {
     remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
     remove_action( 'wp_print_styles', 'print_emoji_styles' );
 } else {
-    add_action( 'wp_enqueue_scripts', 'desativa_script_emojis' );
+    add_action( 'wp_enqueue_scripts', 'dequeue_emoji_scripts' );
 }
 
-function desativa_script_emojis() {
+function dequeue_emoji_scripts() {
     if ( is_page() || !is_singular( 'post' ) ) {
         remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
         remove_action( 'wp_print_styles', 'print_emoji_styles' );
@@ -158,16 +166,16 @@ function desativa_script_emojis() {
 
 
 /**
- * Desativa o script wp-embed.min.js
+ * Deactivates wp-embed.min.js
  */
-function desativa_embed() {
+function dequeue_embed_script() {
     wp_deregister_script( 'wp-embed' );
 }
-add_action( 'wp_enqueue_scripts', 'desativa_embed', 99 );
+add_action( 'wp_enqueue_scripts', 'dequeue_embed_script', 99 );
 
 
 /**
- * Carrega Scripts e Styles
+ * Main style & script loading function
 */
 function dft_enqueue_scripts() {
 
@@ -210,12 +218,16 @@ add_action( 'admin_enqueue_scripts', 'dft_style_admin' );
 add_action( 'wp_enqueue_scripts', 'dft_enqueue_scripts' );
 
 
+/**
+ * Adds ordering options to posts
+ * inside admin panel
+ */
 if ( is_admin() ) {
-    function ordena_post_types_dashboard( $wp_query ) {
+    function post_orders_admin( $wp_query ) {
         if ( is_admin() && !isset( $_GET['orderby'] ) ) {
             $wp_query->set( 'orderby', 'date' );
             $wp_query->set( 'order', 'DESC' );
         }
     }
-    add_filter( 'pre_get_posts', 'ordena_post_types_dashboard' );
+    add_filter( 'pre_get_posts', 'post_orders_admin' );
 }

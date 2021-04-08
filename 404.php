@@ -1,5 +1,13 @@
 <?php
 /**
- * Redirecionaremos o usuário de volta para o Home
+ *  404 Page
  */
-wp_redirect( SITEURL );
+get_header(); ?>
+
+<section class="main-content">
+    <div class="main-grid">
+        <h2>oooops, there's nothing here.</h2>
+    </div>
+</section>
+
+<?php get_footer();

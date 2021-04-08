@@ -1,8 +1,4 @@
-<?php
-/**
- *  Default page template
- */
-get_header(); ?>
+<?php get_header(); ?>
 
 <!-- Start main content-->
 <section class="main-content">

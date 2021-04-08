@@ -1,16 +1,16 @@
 {
-  "short_name": "Drift Web",
-  "name": "Drift Web",
+  "short_name": "Website",
+  "name": "Website Full",
   "orientation": "any",
   "start_url": "/",
   "icons": [
     {
-      "src": "./icones/icone-192.png",
+      "src": "./icons/icon-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "./icones/icone-512.png",
+      "src": "./icons/icon-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
