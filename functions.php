@@ -1,33 +1,19 @@
 <?php	
 
 require_once 'theme-config.php';
+require_once 'globals.php';
 require_once 'class/Drift.php';
-
-use WPDrift\Classes\Drift;
-
-$class = new Drift();
-
-
-wp_create_nav_menu( 'Main Menu' );
-show_admin_bar( false );
-
-if ( WOOCOMMERCE_SUPPORT ) {
-    add_theme_support( 'woocommerce' );
-}
 
 if ( PWA_SUPPORT ) {
     require_once 'PWA/class-Drift_PWA.php';
 }
 
+use WPDrift\Classes\Drift;
 
-/**
- * Add the website's
- * title to the admin panel
- */
-function title_admin( $admin_title, $title ) {
-    return get_bloginfo( 'name' ) .' - '. $title;
-}
-add_filter( 'admin_title', 'title_admin', 10, 2 );
+$class = new Drift();
+
+wp_create_nav_menu( 'Main Menu' );
+show_admin_bar( false );
 
 
 /**
@@ -57,22 +43,6 @@ add_action( 'init', 'dft_load_shortcodes' );
 
 
 /**
- * Pretty-prints an object
- * for debug purposes
- * 
- * @param mixed $print - object to be printed
- */
-if ( ! function_exists( 'pre' ) ) {
-    function pre( $print ) {
-        echo '<pre>';
-            print_r( $print );
-        echo '</pre>';
-    }
-}
-
-
-
-/**
  * Adds additional classes to
  * <body>, including post category
  */
@@ -91,9 +61,6 @@ function dft_body_extra_classes( $classes ) {
     return $classes;
 }
 add_filter( 'body_class', 'dft_body_extra_classes' );
-
-
-
 
 
 /**
