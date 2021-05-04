@@ -25,7 +25,7 @@ use WPDrift\Classes\Drift; ?>
             <div class="header-grid">
                 <?php the_custom_logo(); ?>
                 <nav class="nav-menu" role="navigation">
-                    <?php wp_nav_menu( array ( 'menu' => 'Main Menu' ) ); ?>
+                    <?php wp_nav_menu( [ 'menu' => 'Main Menu' ] ); ?>
                 </nav>
             </div>
         </header>
