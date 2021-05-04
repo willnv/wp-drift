@@ -1,8 +1,9 @@
-<?php 
+<?php
+/**
+ * @author Willon Nava
+ */
+use WPDrift\Classes\Drift; ?>
 
-use WPDrift\Classes\Drift; 
-
-?>
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
@@ -13,14 +14,9 @@ use WPDrift\Classes\Drift;
         <meta name="format-detection" content="telephone=no"/>
 
         <?php wp_head(); ?>
-
-        <?php 
-        /**
-         * Import fonts here
-         * 
-         * <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet">
-         */
-        ?>
+        
+        <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet"> -->
+        
     </head>
 
     <body <?php body_class(); ?>>
