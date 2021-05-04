@@ -7,13 +7,6 @@ use WPDrift\Classes\Drift;
 
 $class = new Drift();
 
-/**
- * General config
- */
-define( 'SITEURL', get_site_url() );
-define( 'THEME_DIR', get_stylesheet_directory_uri() );
-define( 'FONTS_DIR', get_stylesheet_directory_uri() . '/fontes' );
-
 
 /**
  * Initial setup
