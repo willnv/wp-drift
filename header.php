@@ -1,7 +1,12 @@
+<?php 
+
+use WPDrift\Classes\Drift; 
+
+?>
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
-        <?php echo dft_analytics_script(); ?>
+        <?php Drift::dft_analytics_script(); ?>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
         <meta name="theme-color" content="<?= TOP_BAR_COLOR ?>">

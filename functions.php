@@ -109,19 +109,7 @@ function dft_body_extra_classes( $classes ) {
 add_filter( 'body_class', 'dft_body_extra_classes' );
 
 
-/**
- * Adds analytics ID to the website.
- * Define this in theme config file
- */
-function dft_analytics_script() {
 
-    if ( !defined( 'ID_ANALYTICS' ) || !ID_ANALYTICS )
-        return; ?>
-        
-    <script async src="https://www.googletagmanager.com/gtag/js?id=<?= ID_ANALYTICS ?>"></script>
-    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '<?= ID_ANALYTICS ?>');</script>
-<?php
-}
 
 
 /**

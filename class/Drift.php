@@ -21,4 +21,22 @@ class Drift {
             require_once( THEME_ROOT . '/maintenance-mode.php' );
         }
     }
+
+    /**
+     * Enables Google Analytics.
+     * Define ID in configs.
+     */
+    public static function dft_analytics_script() : void {
+
+        if ( !defined( 'ID_ANALYTICS' ) || !ID_ANALYTICS )
+            return; 
+            
+        ob_start(); ?>
+            
+        <script async src="https://www.googletagmanager.com/gtag/js?id=<?= ID_ANALYTICS ?>"></script>
+
+        <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '<?= ID_ANALYTICS ?>');</script>
+
+        <?php ob_flush();
+    }
 }
