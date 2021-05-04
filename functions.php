@@ -1,6 +1,11 @@
 <?php	
 
 require_once 'theme-config.php';
+require_once 'class/Drift.php';
+
+use WPDrift\Classes\Drift;
+
+$class = new Drift();
 
 /**
  * General config
@@ -8,13 +13,6 @@ require_once 'theme-config.php';
 define( 'SITEURL', get_site_url() );
 define( 'THEME_DIR', get_stylesheet_directory_uri() );
 define( 'FONTS_DIR', get_stylesheet_directory_uri() . '/fontes' );
-
-function dft_maintenance_mode() {
-    if ( MAINTENANCE && !is_user_logged_in() && $GLOBALS['pagenow'] != 'wp-login.php' ) {
-        require_once 'maintenance-mode.php';
-    }
-}
-add_action( 'template_redirect', 'dft_maintenance_mode' );
 
 
 /**
@@ -88,24 +86,6 @@ if ( ! function_exists( 'pre' ) ) {
     }
 }
 
-
-/**
- * Register sidebars
- */
-function dft_register_sidebars() {
-    register_sidebar(array(
-        'name'        => 'Blog Sidebar',
-        'id'          => 'sidebar-blog',
-        'description' => 'A sidebar only visible on Blog page.'
-    ));
-
-    register_sidebar(array(
-        'name'        => 'Single Post Sidebar',
-        'id'          => 'sidebar-singlepost',
-        'description' => 'A sidebar only visible on Single post.'
-    ));
-}
-add_action( 'widgets_init', 'dft_register_sidebars' );
 
 
 /**
