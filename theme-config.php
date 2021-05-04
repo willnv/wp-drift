@@ -25,7 +25,7 @@ define( 'TOP_BAR_COLOR', '#000000' );
 define( 'MAINTENANCE', false );
 define( 'BLOG', true );
 define( 'ID_ANALYTICS', false );
-
+define( 'THEME_ROOT', get_theme_root() . '/wp-drift' );
 
 // Debug
 ini_set( 'display_errors', 'On' );
