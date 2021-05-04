@@ -8,15 +8,6 @@ use WPDrift\Classes\Drift;
 $class = new Drift();
 
 
-/**
- * Initial setup
- */
-add_filter( 'auto_update_theme', '__return_false' );
-
-add_theme_support( 'menus' );
-add_theme_support( 'post-thumbnails' ); 
-add_theme_support( 'title-tag' ); 
-add_theme_support( 'custom-logo' );
 wp_create_nav_menu( 'Main Menu' );
 show_admin_bar( false );
 

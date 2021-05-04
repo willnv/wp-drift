@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * This is the main class which handles
+ * nearly all of WP-Drift's features and core
+ * 
+ * @author Willon Nava
+ */
 namespace WPDrift\Classes;
 
 class Drift {
@@ -9,9 +14,19 @@ class Drift {
      */
     public function __construct() {
         add_action( 'template_redirect', [ $this, 'dft_maintenance_mode' ] );
+        add_filter( 'auto_update_theme', '__return_false' );
+
+
+        /**
+         * For some features to work,
+         * WordPress requires an initializer
+         */
+        add_theme_support( 'menus' );
+        add_theme_support( 'post-thumbnails' ); 
+        add_theme_support( 'title-tag' ); 
+        add_theme_support( 'custom-logo' );
     }
 
-    
     /**
     * Redirect the user to a maintenance 
     * page if MAINTENANCE const is defined true
