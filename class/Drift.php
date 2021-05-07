@@ -13,9 +13,13 @@ class Drift {
      * Initialize actions
      */
     public function __construct() {
+        // Actions
         add_action( 'template_redirect', [ $this, 'dft_maintenance_mode' ] );
-        add_filter( 'admin_title', [ $this, 'change_admin_title' ], 10, 2 );
         add_action( 'init', [ $this, 'load_shortcodes' ] );
+
+        // Filters
+        add_filter( 'admin_title', [ $this, 'change_admin_title' ], 10, 2 );
+        add_filter( 'body_class', [ $this, 'extra_body_classes' ] );
 
         // Disable auto updates
         add_filter( 'auto_update_theme', '__return_false' );
@@ -66,6 +70,25 @@ class Drift {
     }
 
     /**
+     * Adds additional classes to
+     * <body>, including post category
+     */
+    function extra_body_classes( $classes ) {
+        global $post;
+        $cats = get_the_category();
+
+        foreach( $cats as $cat ):
+            $classes[] = $cat->slug;
+        endforeach;
+
+        if ( $post ) {
+            $classes[] = $post->post_name;
+        }
+
+        return $classes;
+    }
+
+    /**
      * Debug helper function, simply
      * pretty-prints an object
      */
@@ -99,6 +122,44 @@ class Drift {
             foreach( $files as $file ) {
                 include_once $file;
             }
+        }
+    }
+    
+    /**
+     * Wrapper function to Wordpress' 
+     * enqueue scripts. Adds the possibility to
+     * specify a unique page for the script to be loaded.
+     * 
+     * @see wp_enqueue_script
+     * @param String|int $page - page identifier
+     */
+    public static function enqueue_script( String $handle, String $src, Array $deps = [], bool $in_footer = true, $page = null ) : void {
+
+        if ( $page ) {
+            if ( is_page( $page ) ) {
+                wp_enqueue_script( $handle, $src, $deps, false, $in_footer );
+            }
+        } else {
+            wp_enqueue_script( $handle, $src, $deps, false, $in_footer );
+        }
+    }
+
+    /**
+     * Wrapper function to Wordpress' 
+     * enqueue styles. Adds the possibility to
+     * specify a unique page for the stylesheet to be loaded.
+     * 
+     * @see wp_enqueue_style
+     * @param String|int $page - page identifier
+     */
+    public static function enqueue_style( String $handle, String $src, Array $deps = [], $page = null ) : void {
+
+        if ( $page ) {
+            if ( is_page( $page ) ) {
+                wp_enqueue_style( $handle, $src, $deps, false, 'all' );
+            }
+        } else {
+            wp_enqueue_style( $handle, $src, $deps, false, 'all' );
         }
     }
     
