@@ -9,6 +9,9 @@ Doesn't include visual options, this is a base theme for handcrafted websites.
 - Slick Slider | https://kenwheeler.github.io/slick/
 - Animate it | https://jackonthe.net/css3animateit/
 
+## Requirements
+PHP 7.1+
+
 ## Setup
 Use `theme-config.php` to define basic theme options.
 
