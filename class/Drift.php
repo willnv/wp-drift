@@ -1,7 +1,7 @@
 <?php
 /**
  * This is the main class which handles
- * nearly all of WP-Drift's features and core
+ * nearly all of WP-Drift's features
  * 
  * @author Willon Nava
  */
@@ -15,10 +15,10 @@ class Drift {
     public function __construct() {
         add_action( 'template_redirect', [ $this, 'dft_maintenance_mode' ] );
         add_filter( 'admin_title', [ $this, 'change_admin_title' ], 10, 2 );
+        add_action( 'init', [ $this, 'load_shortcodes' ] );
 
         // Disable auto updates
         add_filter( 'auto_update_theme', '__return_false' );
-
 
         self::init_theme_supports();
     }
@@ -65,9 +65,6 @@ class Drift {
             add_theme_support( 'woocommerce' );
     }
 
-    
-
-
     /**
      * Debug helper function, simply
      * pretty-prints an object
@@ -78,7 +75,6 @@ class Drift {
         echo '</pre>';
     }
 
-
     /**
      * Add the website's
      * title to the admin panel
@@ -86,4 +82,24 @@ class Drift {
     public static function change_admin_title( $admin_title, $title ) : String {
         return get_bloginfo( 'name' ) .' - '. $title;
     }
+
+    /**
+     * Load shortcodes created in
+     * /shortcodes folder. Not loaded
+     * in admin panel.
+     */
+    public static function load_shortcodes() : void {
+
+        if ( is_admin() )
+            return;
+
+        $files = glob( dirname( __FILE__ ) . '/../shortcodes/*.php' );
+
+        if ( !empty( $files ) ) {
+            foreach( $files as $file ) {
+                include_once $file;
+            }
+        }
+    }
+    
 }

@@ -24,25 +24,6 @@ if ( !is_admin() )
 
 
 /**
- * Load shortcodes created in
- * /shortcodes folder. Not loaded
- * in admin panel.
- */
-function dft_load_shortcodes() {
-
-    if ( is_admin() )
-        return;
-
-    $files = glob( dirname( __FILE__ ) . '/shortcodes/*.php' );
-
-    foreach( $files as $file ) {
-        include_once $file;
-    }
-}
-add_action( 'init', 'dft_load_shortcodes' );
-
-
-/**
  * Adds additional classes to
  * <body>, including post category
  */

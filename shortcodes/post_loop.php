@@ -1,6 +1,6 @@
 <?php
 /**
- * Default post-type loop
+ * Simple post loop example
  * 
  * Options: 
  * post_type - String
