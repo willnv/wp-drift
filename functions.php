@@ -43,6 +43,8 @@ function dequeue_emoji_scripts() {
     }
 }
 
+// Disable gutenberg
+add_filter('use_block_editor_for_post', '__return_false');
 
 /**
  * Deactivates wp-embed.min.js
@@ -110,3 +112,5 @@ if ( is_admin() ) {
     }
     add_filter( 'pre_get_posts', 'post_orders_admin' );
 }
+
+
